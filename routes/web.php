@@ -13,6 +13,8 @@ Route::post('/register', [UserController::class, 'store']);
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'authenticate']);
 
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth')->name('dashboard');
