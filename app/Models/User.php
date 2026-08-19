@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 
 #[Fillable(['name', 'email', 'password'])]
-class User extends Model
+class User extends Authenticatable
 {
     public function todos()
     {
