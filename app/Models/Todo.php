@@ -12,4 +12,11 @@ class Todo extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function index()
+    {
+        $todos = Todo::where('user_id', auth()->id())->get();
+    }
+
+    
 }

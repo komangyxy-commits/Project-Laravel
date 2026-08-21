@@ -8,7 +8,7 @@
 <body>
     <h1>Halaman Register</h1>
 
-    <form action="/register" method="POST">
+    <form action="{{ route('register') }}" method="POST">
         @csrf
         <label for="name">Nama</label>
         <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Masukkan nama Anda" required><br>
