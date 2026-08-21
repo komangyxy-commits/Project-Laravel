@@ -19,6 +19,24 @@ class TodoController extends Controller
         return view('todos.create');
     }
 
+    public function edit(Todo $todo)
+    {
+        if ($todo->user_id !== Auth::id()) {
+            abort(403);
+        }
+        return view('todos.edit', compact('todo'));
+    }
+
+    public function destroy(Todo $todo)
+    {
+        if ($todo->user_id !== Auth::id()) {
+            abort(403);
+        }
+        
+        $todo->delete();
+        return redirect()->route('todos.index');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -31,6 +49,31 @@ class TodoController extends Controller
 
         Todo::create([
             'user_id' => Auth::id(),
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status,
+            'priority' => $request->priority,
+            'due_date' => $request->due_date,
+        ]);
+
+        return redirect()->route('todos.index');
+    }
+    
+    public function update(Request $request, Todo $todo)
+    {
+        if ($todo->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'status' => ['required', 'in:pending,in_progress,completed'],
+            'priority' => ['required', 'in:low,medium,high'],
+            'due_date' => ['required', 'date'],
+        ]);
+
+        $todo->update([
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,

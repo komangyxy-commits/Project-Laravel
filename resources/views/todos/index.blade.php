@@ -14,6 +14,14 @@
         <p>{{ $todo->status }}</p>
         <p>{{ $todo->priority }}</p>
         <p>{{ $todo->due_date }}</p>
+        <a href="{{ route('todos.edit', $todo->id) }}">Edit</a>
+
+        <form action="{{ route('todos.destroy', $todo->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit">Hapus</button>
+        </form>
     @empty
         <p>Tidak ada todo</p>
     @endforelse
