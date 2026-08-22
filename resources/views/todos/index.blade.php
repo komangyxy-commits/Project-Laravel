@@ -43,13 +43,10 @@
                             </p>
                             <p class="todo-priority">
                                 Priority :
-
                                 @if ($todo->priority == 'low')
                                     Rendah
-
                                 @elseif ($todo->priority == 'medium')
                                     Sedang
-
                                 @else
                                     Tinggi
                                 @endif
