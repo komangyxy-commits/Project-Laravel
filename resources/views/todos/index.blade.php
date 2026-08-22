@@ -7,16 +7,31 @@
 </head>
 <body>
     <h1>Halaman Todo List</h1>
-
+    <a href="{{ route('dashboard') }}">Kembali ke Dashboard</a>
+    <a href="{{ route('todos.create') }}">Tambah Todo</a>
+    @if (session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
     @forelse ($todos as $todo)
         <p>{{ $todo->title }}</p>
         <p>{{ $todo->description }}</p>
         <p>{{ $todo->status }}</p>
         <p>{{ $todo->priority }}</p>
-        <p>{{ $todo->due_date }}</p>
+        <p>Deadline: {{ $todo->due_date->format('d-m-Y H:i') }}</p>
         <a href="{{ route('todos.edit', $todo->id) }}">Edit</a>
+        
+        @if ($todo->due_date->isToday())
+            <p>Hari ini</p>
 
-        <form action="{{ route('todos.destroy', $todo->id) }}" method="POST">
+        @elseif ($todo->due_date->isPast())
+            <p>Expired</p>
+
+        @else
+            <p>{{ (int) now()->diffInDays($todo->due_date) }} hari lagi</p>
+        @endif
+
+        <form action="{{ route('todos.destroy', $todo->id) }}" method="POST"
+            onsubmit="return confirm('Yakin ingin menghapus Todo ini?')">   
             @csrf
             @method('DELETE')
 

@@ -6,7 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Halaman Dashboard</h1>
+    <h1>Selamat Datang di Web Todo</h1>
+    <p>Kelola tugas, status, prioritas, dan deadline kamu dengan mudah.</p>
+
+    <a href="{{ route('todos.index') }}">
+        Buka Todo
+    </a>
+
     <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">Logout</button>

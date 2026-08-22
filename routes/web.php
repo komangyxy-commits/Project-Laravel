@@ -5,7 +5,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TodoController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
+
+    return redirect()->route('login');
 });
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest')->name('register');
@@ -16,7 +20,7 @@ Route::post('/login', [UserController::class, 'authenticate']);
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/todos/index', [TodoController::class, 'index'])->middleware('auth')->name('todos.index');
+Route::get('/todos', [TodoController::class, 'index'])->middleware('auth')->name('todos.index');
 Route::get('/todos/create', [TodoController::class, 'create'])->middleware('auth')->name('todos.create');
 Route::post('/todos', [TodoController::class, 'store'])->middleware('auth')->name('todos.store');
 Route::get('/todos/{todo}/edit', [TodoController::class, 'edit'])->middleware('auth')->name('todos.edit');

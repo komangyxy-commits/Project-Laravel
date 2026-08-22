@@ -34,7 +34,7 @@ class TodoController extends Controller
         }
         
         $todo->delete();
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index')->with('success', 'Todo berhasil dihapus.');
     }
 
     public function store(Request $request)
@@ -56,7 +56,7 @@ class TodoController extends Controller
             'due_date' => $request->due_date,
         ]);
 
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index')->with('success', 'Todo berhasil ditambahkan.');
     }
     
     public function update(Request $request, Todo $todo)
@@ -81,6 +81,13 @@ class TodoController extends Controller
             'due_date' => $request->due_date,
         ]);
 
-        return redirect()->route('todos.index');
+        return redirect()->route('todos.index')->with('success', 'Todo berhasil diperbarui.');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'due_date' => 'datetime',
+        ];
     }
 }
