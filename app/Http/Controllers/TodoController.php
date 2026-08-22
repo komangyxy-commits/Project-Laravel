@@ -47,6 +47,10 @@ class TodoController extends Controller
             'due_date' => ['required', 'date'],
         ]);
 
+        $completedAt = null;
+        if ($request->status == 'completed') {
+            $completedAt = now();
+        }
         Todo::create([
             'user_id' => Auth::id(),
             'title' => $request->title,
@@ -54,6 +58,7 @@ class TodoController extends Controller
             'status' => $request->status,
             'priority' => $request->priority,
             'due_date' => $request->due_date,
+            'completed_at' => $completedAt,
         ]);
 
         return redirect()->route('todos.index')->with('success', 'Todo berhasil ditambahkan.');
@@ -72,13 +77,22 @@ class TodoController extends Controller
             'priority' => ['required', 'in:low,medium,high'],
             'due_date' => ['required', 'date'],
         ]);
+        
+        $completedAt = $todo->completed_at;
+        if ($todo->status != 'completed' && $request->status == 'completed') {
+            $completedAt = now();
+        }
 
+        if ($request->status != 'completed') {
+            $completedAt = null;
+        }
         $todo->update([
             'title' => $request->title,
             'description' => $request->description,
             'status' => $request->status,
             'priority' => $request->priority,
             'due_date' => $request->due_date,
+            'completed_at' => $completedAt,
         ]);
 
         return redirect()->route('todos.index')->with('success', 'Todo berhasil diperbarui.');
