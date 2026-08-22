@@ -4,34 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <h1>Halaman Register</h1>
+    <main class="form-page">
+        <section class="form-card">
+            <div class="form-header">
+                <h1>Register</h1>
+                <p>Buat akun Todo baru.</p>
+            </div>
 
-    <form action="{{ route('register') }}" method="POST">
-        @csrf
-        <label for="name">Nama</label>
-        <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Masukkan nama Anda" required><br>
-        @error('name')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-        
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required> <br>
-        @error('email')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Nama</label>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Masukkan nama Anda" required><br>
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                    
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required> <br>
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="••••••••" required><br>
-        @error('password')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="••••••••" required><br>
+                    @error('password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
 
-        <label for="password_confirmation">Konfirmasi Password</label>
-        <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" required><br>
+                <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" required><br>
+                </div>
 
-        <button type="submit">Daftar</button>
-    </form> 
+                <button type="submit" class="btn-submit">Daftar</button>
+            </form> 
+            <p class="auth-link">Sudah punya akun?<a href="{{ route('login') }}">Login</a></p>
+        </section>
+    </main>
 </body>
 </html>

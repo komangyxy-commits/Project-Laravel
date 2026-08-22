@@ -58,7 +58,7 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email atau password salah.',
+            'login' => 'Email atau password salah.',
         ])->onlyInput('email');
     }    
 }

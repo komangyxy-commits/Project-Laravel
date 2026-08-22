@@ -25,7 +25,7 @@
             @csrf
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="contoh@email.com" required><br>
+                    <input type="email" name="email" id="email" placeholder="contoh@gmail.com" required><br>
 
                     @error('email')
                         <div>{{ $message }}</div>
@@ -41,7 +41,12 @@
                             {{ $message }}
                         </p>
                     @enderror
-
+                    
+                    @error('login')
+                        <p class="form-error">
+                            {{ $message }}
+                        </p>
+                    @enderror
                     <button type="submit" class="btn-submit">Login</button>
                 </div>
             </form>
