@@ -361,7 +361,6 @@ body {
 }
 
 .form-page {
-    min-height: 100vh;
     padding: 40px 20px;
     display: flex;
     justify-content: center;
@@ -431,6 +430,7 @@ body {
 .btn-submit {
     width: 100%;
     padding: 12px;
+    margin-top: 25px;
     background-color: #1E293B;
     color: white;
     border: none;
@@ -448,3 +448,21 @@ body {
     color: #DC2626;
     font-size: 13px;
 }
+
+.auth-link {
+    margin: 18px 0 0 0;
+    text-align: center;
+    color: #64748B;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #1E293B;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
