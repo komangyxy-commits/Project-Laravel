@@ -1,0 +1,229 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1E293B;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 220px;
+    min-height: 100vh;
+    padding: 24px;
+    background-color: #1E293B;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed
+}
+
+.logo {
+    margin: 0 0 60px 0;
+    font-size: 22px;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-menu a {
+    padding: 10px 12px;
+    color: #F8FAFC;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu a:hover {
+    background-color: #334155;
+    color: #F8FAFC;
+}
+
+.sidebar-menu a.active {
+    background-color: #F8FAFC;
+    color: #1E293B;
+    font-weight: bold;
+}
+
+.logout-form {
+    margin-top: auto;
+}
+
+.btn-logout {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: transparent;
+    color: #F8FAFC;
+    border: 1px solid #F8FAFC;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #F8FAFC;
+    color: #1E293B;
+    border-color: #F8FAFC;
+}
+
+.dashboard-page {
+    flex: 1;
+    padding: 40px;
+    background-color: #F8FAFC;
+    margin-left: 220px;
+
+}
+
+.dashboard-header {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 80px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.dashboard-header p {
+    margin: 0;
+}
+
+.user-info {
+    padding-left: 20px;
+    border-left: 1px solid #E2E8F0;
+}
+
+.welcome-section {
+    margin-bottom: 24px;
+}
+
+.welcome-section h1 {
+    margin: 0 0 6px 0;
+}
+
+.welcome-section p {
+    margin: 0;
+    color: #64748B;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.btn-primary-action {
+    padding: 10px 16px;
+    background-color: #1E293B;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary-action:hover {
+    background-color: #334155;
+}
+
+.btn-secondary-action {
+    padding: 10px 16px;
+    background-color: white;
+    color: #1E293B;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary-action:hover {
+    background-color: #F1F5F9;
+}
+
+.grid-todo {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.item-todo {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.todo-label {
+    margin: 0;
+    color: #64748B;
+    font-size: 14px;
+}
+
+.todo-number {
+    margin: 10px 0 0 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #1E293B;
+}
+
+/* Deadline Terdekat */
+
+.deadline-section {
+    max-width: 1100px;
+    margin-top: 32px;
+}
+
+.deadline-section h2 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+}
+
+.deadline-list {
+    background-color: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+}
+
+.deadline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.deadline-title {
+    margin: 0;
+    color: #1E293B;
+    font-weight: bold;
+}
+
+.deadline-date {
+    margin: 0;
+    color: #64748B;
+    font-size: 14px;
+}
+
+.deadline-empty {
+    margin: 0;
+    padding: 20px;
+    color: #64748B;
+}

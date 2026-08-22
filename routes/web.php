@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -27,6 +28,4 @@ Route::get('/todos/{todo}/edit', [TodoController::class, 'edit'])->middleware('a
 Route::put('/todos/{todo}', [TodoController::class, 'update'])->middleware('auth')->name('todos.update');
 Route::delete('/todos/{todo}', [TodoController::class, 'destroy'])->middleware('auth')->name('todos.destroy');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth')->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
