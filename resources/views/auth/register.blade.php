@@ -18,36 +18,36 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Nama</label>
-                    <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Masukkan nama Anda" required><br>
+                    <input type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Masukkan nama Anda" required>
                     @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <p class="form-error">{{ $message }}</p>
                     @enderror
                 </div>
                     
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required> <br>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required> 
                     @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <p class="form-error">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" required><br>
+                    <input type="password" name="password" id="password" placeholder="••••••••" required>
                     @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        <p class="form-error">{{ $message }}</p>
                     @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="password_confirmation">Konfirmasi Password</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" required><br>
+                    <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••" required>
                 </div>
 
                 <button type="submit" class="btn-submit">Daftar</button>
             </form> 
-            <p class="auth-link">Sudah punya akun?<a href="{{ route('login') }}">Login</a></p>
+            <p class="auth-link">Sudah punya akun? <a href="{{ route('login') }}">Login</a></p>
         </section>
     </main>
 </body>

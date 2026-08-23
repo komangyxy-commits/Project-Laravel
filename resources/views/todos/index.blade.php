@@ -36,13 +36,13 @@
                             <p class="todo-status">@if ($todo->status == 'pending')
                                     Pending
                                 @elseif ($todo->status == 'in_progress')
-                                    In Progress
+                                    Dalam Proses
                                 @else
                                     Selesai
                                 @endif
                             </p>
                             <p class="todo-priority">
-                                Priority :
+                                Prioritas :
                                 @if ($todo->priority == 'low')
                                     Rendah
                                 @elseif ($todo->priority == 'medium')
@@ -57,19 +57,22 @@
                             <p class="deadline-date">Deadline : 
                                 {{ $todo->due_date->locale('id')->translatedFormat('l, d F Y H:i') }}
                             </p>
-                            @if ($todo->due_date->isToday())
-                                <p class="deadline-status">Hari ini</p>
-                            @elseif ($todo->due_date->isPast())
-                                <p class="deadline-status expired">Expired</p>
-                            @else
-                                <p class="deadline-status">{{ (int) now()->diffInDays($todo->due_date) }} hari lagi</p>
+                            @if ($todo->status != 'completed')
+                                @if ($todo->due_date->isToday())
+                                    <p class="deadline-status">Hari ini</p>
+                                @elseif ($todo->due_date->isPast())
+                                    <p class="deadline-status expired">Expired</p>
+                                @else
+                                    <p class="deadline-status">{{ (int) now()->diffInDays($todo->due_date) }} hari lagi</p>
+                                @endif
                             @endif
 
-                            @if ($todo->status == 'completed' && $todo->completed_at)
-                                <p class="completed-date">Selesai pada :
-                                    {{ $todo->completed_at->locale('id')->translatedFormat('l, d F Y H:i') }}
-                                </p>
-                            @endif
+                                @if ($todo->status == 'completed' && $todo->completed_at)
+                                    <p class="completed-date">Selesai pada :
+                                        {{ $todo->completed_at->locale('id')->translatedFormat('l, d F Y H:i') }}
+                                    </p>
+                                @endif
+                            
                         </div>
                         <div class="todo-actions">
                             <a href="{{ route('todos.edit', $todo->id) }}" class="btn-edit">Edit</a>

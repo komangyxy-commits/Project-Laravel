@@ -16,23 +16,23 @@
                     <p>Halo, {{ $user->name }}!</p>
                 </div>
             </section>
-            
+                
             <section class="welcome-section">
                 <h1>Selamat Datang</h1>
                 <p>Kelola dan pantau ringkasan tugas kamu hari ini.</p>
             </section>
-            
+                
             <div class="dashboard-actions">
                 <a href="{{ route('todos.create') }}"
-                   class="btn-primary-action">
+                class="btn-primary-action">
                     + Tambah Todo Baru
                 </a>
                 <a href="{{ route('todos.index') }}"
-                   class="btn-secondary-action">
+                class="btn-secondary-action">
                     Lihat Semua Todo
                 </a>
             </div>
-            
+                
             <section class="grid-todo">
                 <div class="item-todo">
                     <p class="todo-label">Total Todo</p>
@@ -61,7 +61,7 @@
                     @forelse($todoTerdekat as $todo)
                         <div class="deadline-item">
                             <p class="deadline-title">{{ $todo->title }}</p>
-                            <p class="deadline-date">{{ $todo->due_date->format('d-m-Y H:i') }}</p>
+                            <p class="deadline-date">{{ $todo->due_date->format('d F Y H:i') }}</p>
                         </div>
                     @empty
                         <p class="deadline-empty">Tidak ada Todo yang akan datang.</p>

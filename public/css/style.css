@@ -21,7 +21,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    position: fixed
+    position: fixed;
 }
 
 .logo {
@@ -330,11 +330,6 @@ body {
     margin-top: 16px;
 }
 
-.deadline-date {
-    margin: 0;
-    color: #1E293B;
-}
-
 .deadline-status {
     margin: 6px 0 0 0;
     color: #64748B;
@@ -361,6 +356,8 @@ body {
 }
 
 .form-page {
+    min-height: 100vh; 
+    align-items: center;
     padding: 40px 20px;
     display: flex;
     justify-content: center;
@@ -466,3 +463,99 @@ body {
     text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+    .layout {
+        display: block;
+    }
+
+    .sidebar {
+        position: sticky;
+        top: 0;
+       
+        width: 100%;
+        min-height: auto;
+        padding: 16px;
+    }
+
+    .logo {
+        margin: 0 0 16px 0;
+    }
+
+    .sidebar-menu {
+        flex-direction: row;
+    }
+
+    .sidebar-menu a {
+        flex: 1;
+        text-align: center;
+    }
+
+    .logout-form {
+        margin-top: 12px;
+    }
+
+    .dashboard-page {
+        margin-left: 0;
+        padding: 24px 16px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    .user-info {
+        padding-left: 0;
+        border-left: none;
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary-action,
+    .btn-secondary-action {
+        text-align: center;
+    }
+
+    .grid-todo {
+        grid-template-columns: 1fr;
+    }
+
+    .deadline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .todo-page {
+        margin-left: 0;
+        padding: 24px 16px;
+    }
+
+    .todo-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .todo-info {
+        flex-wrap: wrap;
+    }
+
+    .todo-actions {
+        flex-wrap: wrap;
+    }
+
+    .form-page {
+        padding: 20px 16px;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 560px;
+        padding: 24px;
+    }
+}

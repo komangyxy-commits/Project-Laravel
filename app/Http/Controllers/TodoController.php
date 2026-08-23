@@ -97,11 +97,4 @@ class TodoController extends Controller
 
         return redirect()->route('todos.index')->with('success', 'Todo berhasil diperbarui.');
     }
-
-    protected function casts(): array
-    {
-        return [
-            'due_date' => 'datetime',
-        ];
-    }
 }

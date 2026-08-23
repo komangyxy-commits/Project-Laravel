@@ -14,12 +14,12 @@ Route::get('/', function () {
 });
 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest')->name('register');
-Route::post('/register', [UserController::class, 'store']);
+Route::post('/register', [UserController::class, 'store'])->middleware('guest');
     
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
-Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
 
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get('/todos', [TodoController::class, 'index'])->middleware('auth')->name('todos.index');
 Route::get('/todos/create', [TodoController::class, 'create'])->middleware('auth')->name('todos.create');

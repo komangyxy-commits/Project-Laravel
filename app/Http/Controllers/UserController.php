@@ -25,7 +25,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('login');
     }
 
     public function store(Request $request)
@@ -52,9 +52,9 @@ class UserController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect ()->route('dashboard');
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors([

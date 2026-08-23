@@ -12,7 +12,7 @@
         <section class="form-card">
             <div class="form-header">
                 <h1>Login</h1>
-                <p>Masuk ke akun MyTodo kamu.</p>
+                <p>Masuk ke akun Todo kamu.</p>
             </div>
 
             @if(session('success'))
@@ -28,7 +28,7 @@
                     <input type="email" name="email" id="email" placeholder="contoh@gmail.com" required><br>
 
                     @error('email')
-                        <div>{{ $message }}</div>
+                        <p class="form-error">{{ $message }}</p>
                     @enderror
                 </div>
                     
@@ -42,15 +42,15 @@
                         </p>
                     @enderror
                     
-                    @error('login')
-                        <p class="form-error">
-                            {{ $message }}
-                        </p>
-                    @enderror
                     <button type="submit" class="btn-submit">Login</button>
                 </div>
             </form>
-            <p class="auth-link">Belum punya akun?<a href="{{ route('register') }}">Daftar</a></p>
+            @error('login')
+                <p class="form-error">
+                    {{ $message }}
+                </p>
+            @enderror
+            <p class="auth-link">Belum punya akun? <a href="{{ route('register') }}">Daftar</a></p>
         </section>
     </main>
 </body>
